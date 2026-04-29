@@ -1,3 +1,4 @@
+import AboutSection from "./components/AboutSection";
 import Hero from "./components/Hero";
 import HowItWorks from "./components/HowItWorks";
 import Navbar from "./components/Navbar";
@@ -17,6 +18,7 @@ function App() {
         <HowItWorks/>
         <PricingSection/>
         <WhyChooseSection/>
+        <AboutSection/>
       </main>
     </>
   );
