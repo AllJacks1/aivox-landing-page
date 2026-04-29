@@ -126,6 +126,7 @@
 
 /* Headline */
 .hero__headline {
+  text-align: left;
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 800;
   line-height: 1.1;
@@ -143,6 +144,7 @@
 
 /* Subheadline */
 .hero__subheadline {
+  text-align: left;
   font-size: clamp(1.0625rem, 2vw, 1.25rem);
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.7);

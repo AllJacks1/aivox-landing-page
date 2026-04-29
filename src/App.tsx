@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import PricingSection from "./components/PricingSection";
 import ServicesSection from "./components/ServicesSection";
 import TrustBar from "./components/TrustBar";
+import WhyChooseSection from "./components/WhyChooseSection";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <ServicesSection/>
         <HowItWorks/>
         <PricingSection/>
+        <WhyChooseSection/>
       </main>
     </>
   );
