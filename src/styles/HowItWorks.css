@@ -1,0 +1,209 @@
+.how-it-works {
+  padding: var(--space-24) 0;
+  background: var(--bg-secondary);
+}
+
+.how-it-works-container {
+  max-width: var(--container-xl);
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+/* Header */
+.how-it-works-header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto var(--space-16);
+}
+
+.how-it-works-header .section-label {
+  display: inline-block;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-4);
+}
+
+.how-it-works-header .section-title {
+  font-size: var(--text-4xl);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: var(--leading-tight);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-4);
+}
+
+.how-it-works-header .section-description {
+  font-size: var(--text-lg);
+  color: var(--text-muted);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+
+/* Timeline */
+.timeline {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  position: relative;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 68px;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--border-light) 0%,
+    var(--primary) 20%,
+    var(--primary) 80%,
+    var(--border-light) 100%
+  );
+  opacity: 0.3;
+  z-index: 0;
+}
+
+.timeline-step {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 var(--space-3);
+  z-index: 1;
+}
+
+/* Card */
+.timeline-card {
+  position: relative;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-xl);
+  padding: var(--space-4) var(--space-6);
+  width: 100%;
+  max-width: 410px;
+  min-height: 320px;
+  margin: 0 auto;
+  transition: all var(--transition-base);
+  cursor: default;
+}
+
+.timeline-card:hover {
+  border-color: var(--primary-border);
+  box-shadow: var(--shadow-lg), var(--shadow-glow);
+  transform: translateY(-6px);
+}
+
+/* Step Number */
+.timeline-number {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary-dark);
+  color: var(--primary-light);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  border: 2px solid var(--primary);
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+/* Icon */
+.timeline-icon-wrapper {
+  width: 64px;
+  height: 64px;
+  background: var(--primary-subtle);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: var(--space-4) auto var(--space-6);
+  transition: all var(--transition-base);
+}
+
+.timeline-card:hover .timeline-icon-wrapper {
+  background: var(--primary);
+  box-shadow: var(--shadow-glow);
+}
+
+.timeline-icon {
+  width: 28px;
+  height: 28px;
+  color: var(--primary);
+  transition: color var(--transition-base);
+}
+
+.timeline-card:hover .timeline-icon {
+  color: white;
+}
+
+/* Title */
+.timeline-title {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: var(--leading-tight);
+  margin-bottom: var(--space-3);
+  letter-spacing: -0.01em;
+}
+
+/* Description */
+.timeline-description {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 1024px) {
+  .timeline {
+    flex-wrap: wrap;
+    gap: var(--space-8) var(--space-4);
+  }
+
+  .timeline::before {
+    display: none;
+  }
+
+  .timeline-step {
+    flex: 0 0 calc(33.333% - var(--space-4));
+    padding: 0;
+  }
+
+  .timeline-card {
+    max-width: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .how-it-works {
+    padding: var(--space-16) 0;
+  }
+
+  .how-it-works-header .section-title {
+    font-size: var(--text-3xl);
+  }
+
+  .timeline-step {
+    flex: 0 0 100%;
+  }
+
+  .timeline-card {
+    padding: var(--space-6);
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}
