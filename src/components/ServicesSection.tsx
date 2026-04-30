@@ -8,8 +8,10 @@ import {
   ArrowRight,
 } from "lucide-react";
 import "../styles/ServicesSection.css";
+import { Link } from "react-router-dom";
 
 interface Service {
+  id: string
   icon: React.ElementType;
   title: string;
   description: string;
@@ -17,30 +19,35 @@ interface Service {
 
 const services: Service[] = [
   {
+    id: "website-development",
     icon: Globe,
     title: "Website Development",
     description:
       "Custom, responsive websites built for performance and conversion. From landing pages to full-scale web applications.",
   },
   {
+    id: "pos-systems",
     icon: CreditCard,
     title: "POS Systems",
     description:
       "Integrated point-of-sale solutions that streamline transactions, inventory, and customer management in real time.",
   },
   {
+    id: "android-app-development",
     icon: Smartphone,
     title: "Android App Development",
     description:
       "Native Android applications designed for speed, reliability, and seamless user experiences across all devices.",
   },
   {
+    id: "network-setup-and-security",
     icon: ShieldCheck,
     title: "Network Setup & Security",
     description:
       "Enterprise-grade network architecture, monitoring, and cybersecurity to protect your business infrastructure.",
   },
   {
+    id: "custom-software",
     icon: Code2,
     title: "Custom Software",
     description:
@@ -50,7 +57,7 @@ const services: Service[] = [
 
 const ServicesSection: React.FC = () => {
   return (
-    <section className="services-section">
+    <section id="services" className="services-section">
       <div className="services-container">
         {/* Section Header */}
         <div className="services-header">
@@ -65,19 +72,25 @@ const ServicesSection: React.FC = () => {
         {/* Services Grid */}
         <div className="services-grid">
           {services.map((service) => (
-            <div key={service.title} className="service-card">
-              <div className="service-card-inner">
-                <div className="service-icon-wrapper">
-                  <service.icon className="service-icon" strokeWidth={1.5} />
-                </div>
-                <h3 className="service-title">{service.title}</h3>
-                <p className="service-description">{service.description}</p>
-                <div className="service-cta">
-                  <span className="service-cta-text">Learn More</span>
-                  <ArrowRight className="service-cta-arrow" strokeWidth={2} />
+            <Link
+              to={`/services/${service.id}`}
+              key={service.id}
+              className="service-link"
+            >
+              <div className="service-card">
+                <div className="service-card-inner">
+                  <div className="service-icon-wrapper">
+                    <service.icon className="service-icon" strokeWidth={1.5} />
+                  </div>
+                  <h3 className="service-title">{service.title}</h3>
+                  <p className="service-description">{service.description}</p>
+                  <div className="service-cta">
+                    <span className="service-cta-text">Learn More</span>
+                    <ArrowRight className="service-cta-arrow" strokeWidth={2} />
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

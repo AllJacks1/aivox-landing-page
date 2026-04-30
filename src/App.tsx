@@ -1,3 +1,4 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AboutSection from "./components/AboutSection";
 import Hero from "./components/Hero";
 import HowItWorks from "./components/HowItWorks";
@@ -6,22 +7,36 @@ import PricingSection from "./components/PricingSection";
 import ServicesSection from "./components/ServicesSection";
 import TrustBar from "./components/TrustBar";
 import WhyChooseSection from "./components/WhyChooseSection";
+import ServiceArticle from "./components/ServiceArticle";
+import { HelmetProvider } from "react-helmet-async";
 
 function App() {
   return (
-    <>
-      <Navbar />
-      <main>
-        <Hero />
-        <TrustBar/>
-        <ServicesSection/>
-        <HowItWorks/>
-        <PricingSection/>
-        <WhyChooseSection/>
-        <AboutSection/>
-      </main>
-    </>
+    <HelmetProvider>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          {/* Main Landing Page */}
+          <Route
+            path="/"
+            element={
+              <main>
+                <Hero />
+                <TrustBar />
+                <ServicesSection />
+                <HowItWorks />
+                <PricingSection />
+                <WhyChooseSection />
+                <AboutSection />
+              </main>
+            }
+          />
+
+          {/* Dynamic Article Page */}
+          <Route path="/services/:serviceId" element={<ServiceArticle />} />
+        </Routes>
+      </BrowserRouter>
+    </HelmetProvider>
   );
 }
-
 export default App;

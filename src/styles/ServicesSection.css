@@ -49,6 +49,12 @@
   gap: var(--space-6);
 }
 
+.service-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
 /* Service Card */
 .service-card {
   position: relative;
