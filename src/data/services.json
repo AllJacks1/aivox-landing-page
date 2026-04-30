@@ -2,27 +2,144 @@
   {
     "id": "website-development",
     "title": "Website Development: Custom, Scalable, and Built for Growth",
-    "description": "Custom, responsive websites built for performance and conversion. From landing pages to full-scale web applications.",
+    "description": "Custom, responsive, and performance-driven websites designed to convert visitors into customers. From landing pages to full-scale web applications, built for scalability and growth.",
     "sections": [
       {
         "heading": "Strategic Investment",
         "content": [
           "Having a website is no longer enough in today’s competitive digital landscape; businesses need a powerful, high-performing platform that drives real results.",
-          "At AivoxTech Solutions, website development is approached as a strategic investment, not just a technical task. By combining customization, responsiveness, and performance optimization, AivoxTech empowers small businesses and startups in the Philippines to build strong online presences."
+          "At AivoxTech Solutions, website development is approached as a strategic investment, not just a technical task. By combining customization, responsiveness, and performance optimization, businesses are empowered to build strong online presences that convert visitors into loyal customers."
         ]
       },
       {
         "heading": "Tailored Solutions for Every Business",
         "content": [
-          "AivoxTech Solutions understands that no two businesses are alike. That’s why every website is built from the ground up to reflect each client’s unique brand identity, goals, and operational needs.",
-          "This customized approach allows businesses to move beyond generic templates and instead leverage digital platforms that truly support their growth."
+          "No two businesses are alike, which is why every website is built from the ground up to reflect each client’s unique brand identity, goals, and operational needs.",
+          "Whether it’s a simple landing page for lead generation or a multi-functional web application, each solution is designed to be both practical and scalable—moving beyond generic templates to platforms that truly support business growth.",
+          "From intuitive user interfaces to efficient backend systems, every detail is crafted with purpose."
         ]
       },
       {
         "heading": "Responsive Design for Modern Users",
         "content": [
-          "With the increasing reliance on mobile devices across the Philippines, AivoxTech ensures that every website is fully responsive.",
-          "Responsive design not only improves usability but also strengthens a business’s visibility online by ensuring mobile-friendly performance."
+          "With the increasing reliance on mobile devices, every website is developed to be fully responsive across smartphones, tablets, and desktops.",
+          "This ensures a seamless and engaging user experience regardless of screen size, improving usability while strengthening online visibility.",
+          "Mobile-friendly performance also helps businesses reach wider audiences and remain competitive in search rankings."
+        ]
+      },
+      {
+        "heading": "Performance That Drives Results",
+        "content": [
+          "Speed and reliability are at the core of the development process, as slow websites can cost valuable opportunities.",
+          "Through clean coding practices, efficient asset management, and modern deployment tools, websites are built to load quickly and run smoothly.",
+          "This results in better user experience, lower bounce rates, and higher conversion potential."
+        ]
+      },
+      {
+        "heading": "Conversion-Focused Development",
+        "content": [
+          "A website should do more than look good—it should drive action.",
+          "Every project integrates conversion-focused strategies such as strategically placed call-to-action buttons, intuitive navigation, and user-centered layouts.",
+          "These elements are designed to guide users toward meaningful outcomes, turning visitors into leads or customers."
+        ]
+      },
+      {
+        "heading": "From Landing Pages to Full-Scale Web Applications",
+        "content": [
+          "A wide range of development services is offered to match different business needs.",
+          "High-converting landing pages provide a focused and cost-effective solution for startups and marketing campaigns, while full-scale web applications offer advanced features like dashboards, system integrations, and automated workflows.",
+          "An agile development process ensures efficient delivery while remaining flexible to feedback and evolving requirements."
+        ]
+      },
+      {
+        "heading": "Affordable and Scalable for Growing Businesses",
+        "content": [
+          "Cost-effective pricing models make professional website development accessible to small businesses without compromising quality.",
+          "Every solution is built with scalability in mind, allowing websites to evolve alongside business growth—supporting new features, increased traffic, and expanded operations without requiring a complete rebuild."
+        ]
+      },
+      {
+        "heading": "Empowering Businesses and Future Talent",
+        "content": [
+          "Beyond delivering high-quality websites, there is a strong commitment to nurturing the next generation of IT professionals.",
+          "By involving fresh graduates in real-world projects, innovative ideas and fresh perspectives are brought into the development process.",
+          "This approach not only enhances service quality but also contributes to the growth of the local tech industry."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pos-systems",
+    "title": "POS Systems: Scalable and Built for Real-Time Business Operations",
+    "description": "All-in-one POS systems for real-time transactions, inventory tracking, and customer management—customized, scalable, and built for efficiency.",
+    "sections": [
+      {
+        "heading": "Central Hub for Business Operations",
+        "content": [
+          "In fast-paced environments such as retail stores, cafés, and service-based businesses, efficiency and accuracy are critical.",
+          "A modern POS system goes beyond payment processing—it acts as the central hub connecting transactions, inventory, and customer data, helping businesses operate smarter and faster."
+        ]
+      },
+      {
+        "heading": "All-in-One Transaction Management",
+        "content": [
+          "Integrated POS systems simplify daily operations by handling sales processing, receipt generation, and payment tracking in real time.",
+          "This reduces manual errors, speeds up checkout, and improves the overall customer experience.",
+          "Centralized transaction data also provides clear visibility into sales performance, enabling faster and more informed decision-making."
+        ]
+      },
+      {
+        "heading": "Real-Time Inventory Tracking",
+        "content": [
+          "Inventory management becomes more efficient with real-time stock updates that automatically adjust after every sale.",
+          "This helps prevent overstocking and stockouts while maintaining accurate inventory levels.",
+          "With insights into product movement and demand trends, businesses can make smarter purchasing decisions and reduce costs."
+        ]
+      },
+      {
+        "heading": "Customer Management Made Simple",
+        "content": [
+          "Built-in customer management tools allow businesses to store customer information, track purchase history, and personalize services.",
+          "These features support targeted promotions, repeat customer engagement, and better understanding of buying behavior.",
+          "Stronger customer relationships lead to improved loyalty and increased revenue."
+        ]
+      },
+      {
+        "heading": "Customized for Your Business Needs",
+        "content": [
+          "Each POS system is tailored to match specific business operations, whether for restaurants, retail stores, or service-based companies.",
+          "Features can include menu management, order tracking, service billing, and customized reporting.",
+          "This ensures businesses get exactly what they need without unnecessary complexity."
+        ]
+      },
+      {
+        "heading": "Seamless Integration and Scalability",
+        "content": [
+          "POS systems are designed to integrate smoothly with accounting software, websites, and mobile applications.",
+          "As businesses grow, the system scales to support additional branches, users, and product lines.",
+          "This future-ready approach allows expansion without needing to replace the entire system."
+        ]
+      },
+      {
+        "heading": "Affordable Solutions for Growing Businesses",
+        "content": [
+          "Cost-effective pricing makes advanced POS technology accessible to small businesses and startups.",
+          "Flexible packages ensure clients only pay for the features they need, making digital transformation more attainable without compromising quality."
+        ]
+      },
+      {
+        "heading": "Empowering Businesses and Local Talent",
+        "content": [
+          "Beyond delivering powerful systems, there is a commitment to supporting local talent by involving fresh graduates in development.",
+          "This approach brings innovative ideas into each solution while contributing to the growth of the local tech ecosystem."
+        ]
+      },
+      {
+        "heading": "Complete Business Management Solution",
+        "content": [
+          "POS systems go beyond simple transactions by combining sales, inventory, and customer insights into one seamless platform.",
+          "This integrated approach helps businesses improve efficiency, enhance customer experience, and drive sustainable growth.",
+          "It provides the ideal balance of performance, customization, and affordability for modern businesses."
         ]
       }
     ]
