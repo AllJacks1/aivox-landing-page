@@ -222,6 +222,7 @@
   border-radius: 0.75rem;
   transition: all 0.2s ease;
   white-space: nowrap;
+  cursor: pointer;
 }
 
 .navbar__cta:hover {

@@ -10,6 +10,7 @@ import WhyChooseSection from "./components/WhyChooseSection";
 import ServiceArticle from "./components/ServiceArticle";
 import { HelmetProvider } from "react-helmet-async";
 import FinalCTA from "./components/FinalCTA";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -28,8 +29,9 @@ function App() {
                 <HowItWorks />
                 <PricingSection />
                 <WhyChooseSection />
+                <FinalCTA />
                 <AboutSection />
-                <FinalCTA/>
+                <Footer />
               </main>
             }
           />

@@ -81,7 +81,7 @@ const PricingSection: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <section className="pricing-section">
+    <section id="pricing" className="pricing-section">
       <div className="pricing-container">
         {/* Section Header */}
         <div className="pricing-header">

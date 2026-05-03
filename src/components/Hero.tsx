@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import "../styles/Hero.css";
 import ContactModal from "./ContactModal";
+import { HashLink } from "react-router-hash-link";
 
 // ─── Types ─────────────────────────────────────────────
 
@@ -72,7 +73,6 @@ export default function Hero({
   subheadline = "Websites, POS Systems, Apps & Custom Software — built for startups and SMEs in the Philippines.",
   primaryCta = "Get Started",
   secondaryCta = "View Services",
-  onSecondaryClick,
 }: HeroProps) {
   const heroRef = useRef<HTMLElement>(null);
   const mockupRef = useRef<HTMLDivElement>(null);
@@ -173,17 +173,15 @@ export default function Hero({
               {primaryCta}
               <ArrowRight size={18} aria-hidden="true" />
             </a>
-            <a
-              href="#services"
-              className="hero__cta hero__cta--secondary"
-              onClick={(e) => {
-                e.preventDefault();
-                onSecondaryClick?.();
-              }}
-            >
-              <Play size={16} aria-hidden="true" />
-              {secondaryCta}
-            </a>
+            <HashLink smooth to="/#services">
+              <a
+                href="#services"
+                className="hero__cta hero__cta--secondary"
+              >
+                <Play size={16} aria-hidden="true" />
+                {secondaryCta}
+              </a>
+            </HashLink>
           </div>
 
           {/* Trust Indicators */}

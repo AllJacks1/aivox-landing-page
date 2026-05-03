@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from "react";
-import { Menu, X, ChevronDown, Search, Zap } from "lucide-react";
+import { Menu, X, ChevronDown, Zap } from "lucide-react";
 import "../styles/Navbar.css";
 import ContactModal from "./ContactModal";
+import { HashLink } from "react-router-hash-link";
 
 // ─── Types ─────────────────────────────────────────────
 
@@ -32,9 +33,8 @@ const navLinks: NavLinkItem[] = [
     ],
   },
   { label: "Pricing", href: "#pricing" },
-  { label: "Portfolio", href: "#portfolio" },
   { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "Contact", href: "#footer" },
 ];
 
 // ─── Component ─────────────────────────────────────────
@@ -44,13 +44,13 @@ export default function Navbar({
   ctaText = "Get Free Consultation",
 }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  //const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   //const [cartCount] = useState(2);
 
-  const searchInputRef = useRef<HTMLInputElement>(null);
+  //const searchInputRef = useRef<HTMLInputElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   // Handle scroll effect
@@ -77,11 +77,11 @@ export default function Navbar({
   }, []);
 
   // Focus search input when opened
-  useEffect(() => {
-    if (isSearchOpen && searchInputRef.current) {
-      searchInputRef.current.focus();
-    }
-  }, [isSearchOpen]);
+  // useEffect(() => {
+  //   if (isSearchOpen && searchInputRef.current) {
+  //     searchInputRef.current.focus();
+  //   }
+  // }, [isSearchOpen]);
 
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
   const closeMenu = () => setIsMenuOpen(false);
@@ -142,15 +142,21 @@ export default function Navbar({
                         role="menu"
                       >
                         {link.children.map((child) => (
-                          <a
-                            key={child.label}
-                            href={child.href}
-                            className="navbar__dropdown-item"
-                            role="menuitem"
-                            onClick={handleLinkClick}
+                          <HashLink
+                            smooth
+                            to={`/${child.href}`}
+                            className="back-link"
                           >
-                            {child.label}
-                          </a>
+                            <a
+                              key={child.label}
+                              href={child.href}
+                              className="navbar__dropdown-item"
+                              role="menuitem"
+                              onClick={handleLinkClick}
+                            >
+                              {child.label}
+                            </a>
+                          </HashLink>
                         ))}
                       </div>
                     </div>
@@ -171,14 +177,14 @@ export default function Navbar({
           {/* ─── Right Actions ───────────────────────────── */}
           <div className="navbar__actions">
             {/* Search Toggle */}
-            <button
+            {/* <button
               className="navbar__icon-btn"
               onClick={() => setIsSearchOpen((prev) => !prev)}
               aria-label="Toggle search"
               aria-expanded={isSearchOpen}
             >
               <Search size={20} />
-            </button>
+            </button> */}
 
             {/* Cart Icon */}
             {/* <a
@@ -211,7 +217,7 @@ export default function Navbar({
         </div>
 
         {/* ─── Search Bar ────────────────────────────────── */}
-        <div
+        {/* <div
           className={`navbar__search ${isSearchOpen ? "navbar__search--open" : ""}`}
         >
           <div className="navbar__search-inner">
@@ -231,7 +237,7 @@ export default function Navbar({
               <X size={18} />
             </button>
           </div>
-        </div>
+        </div> */}
 
         {/* ─── Mobile Menu ───────────────────────────────── */}
         <div
