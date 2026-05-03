@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   ArrowRight,
   Play,
@@ -15,6 +15,7 @@ import {
   LayoutDashboard,
 } from "lucide-react";
 import "../styles/Hero.css";
+import ContactModal from "./ContactModal";
 
 // ─── Types ─────────────────────────────────────────────
 
@@ -71,11 +72,11 @@ export default function Hero({
   subheadline = "Websites, POS Systems, Apps & Custom Software — built for startups and SMEs in the Philippines.",
   primaryCta = "Get Started",
   secondaryCta = "View Services",
-  onPrimaryClick,
   onSecondaryClick,
 }: HeroProps) {
   const heroRef = useRef<HTMLElement>(null);
   const mockupRef = useRef<HTMLDivElement>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Parallax effect on scroll
   useEffect(() => {
@@ -166,12 +167,8 @@ export default function Hero({
           {/* CTA Buttons */}
           <div className="hero__ctas hero__reveal">
             <a
-              href="#get-started"
               className="hero__cta hero__cta--primary"
-              onClick={(e) => {
-                e.preventDefault();
-                onPrimaryClick?.();
-              }}
+              onClick={() => setIsModalOpen(true)}
             >
               {primaryCta}
               <ArrowRight size={18} aria-hidden="true" />
@@ -329,6 +326,11 @@ export default function Hero({
           />
         </svg>
       </div>
+
+      <ContactModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </section>
   );
 }

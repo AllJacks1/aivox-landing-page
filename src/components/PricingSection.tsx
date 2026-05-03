@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Check,
   Sparkles,
@@ -7,6 +7,7 @@ import {
   Calendar,
 } from "lucide-react";
 import "../styles/PricingSection.css";
+import ContactModal from "./ContactModal";
 
 interface PricingTier {
   name: string;
@@ -77,6 +78,8 @@ const tiers: PricingTier[] = [
 ];
 
 const PricingSection: React.FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <section className="pricing-section">
       <div className="pricing-container">
@@ -124,6 +127,7 @@ const PricingSection: React.FC = () => {
 
               <button
                 className={`pricing-cta ${tier.highlighted ? "pricing-cta-primary" : "pricing-cta-secondary"}`}
+                onClick={() => setIsModalOpen(true)}
               >
                 <tier.ctaIcon className="pricing-cta-icon" strokeWidth={2} />
                 {tier.cta}
@@ -150,6 +154,11 @@ const PricingSection: React.FC = () => {
           </div>
         </div>
       </div>
+
+      <ContactModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </section>
   );
 };

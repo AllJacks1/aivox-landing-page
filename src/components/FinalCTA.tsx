@@ -1,12 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Calendar, ArrowRight, Zap } from "lucide-react";
 import "../styles/FinalCTA.css";
+import ContactModal from "./ContactModal";
 
 const FinalCTA: React.FC = () => {
-  const handleConsultation = () => {
-    // Replace with your actual booking link or modal trigger
-    window.open("#consultation", "_self");
-  };
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <section className="final-cta-section">
@@ -32,7 +30,10 @@ const FinalCTA: React.FC = () => {
           </p>
 
           {/* CTA Button */}
-          <button className="final-cta-button" onClick={handleConsultation}>
+          <button
+            className="final-cta-button"
+            onClick={() => setIsModalOpen(true)}
+          >
             <Calendar className="final-cta-button-icon" strokeWidth={2} />
             <span>Book Free Consultation</span>
             <ArrowRight className="final-cta-button-arrow" strokeWidth={2} />
@@ -44,6 +45,11 @@ const FinalCTA: React.FC = () => {
           </p>
         </div>
       </div>
+
+      <ContactModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </section>
   );
 };
