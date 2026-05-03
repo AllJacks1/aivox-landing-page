@@ -138,10 +138,6 @@
   transition: opacity var(--transition-base);
 }
 
-.article-section:hover::before {
-  opacity: 1;
-}
-
 .section-heading {
   font-size: var(--text-2xl);
   font-weight: 700;

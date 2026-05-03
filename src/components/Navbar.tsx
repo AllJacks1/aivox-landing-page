@@ -21,15 +21,16 @@ interface NavbarProps {
 // ─── Navigation Data ───────────────────────────────────
 
 const navLinks: NavLinkItem[] = [
-  { label: "Home", href: "#home" },
+  { label: "Home", href: "/#home" },
   {
     label: "Services",
     href: "#services",
     children: [
-      { label: "Web Development", href: "#web-dev" },
-      { label: "Mobile Apps", href: "#mobile-apps" },
-      { label: "Cloud Solutions", href: "#cloud" },
-      { label: "AI Integration", href: "#ai" },
+      { label: "Web Development", href: "/services/website-development" },
+      { label: "POS Systems", href: "/services/pos-systems" },
+      { label: "Android App Development", href: "/services/android-app-development" },
+      { label: "Network Setup and Security", href: "/services/network-setup-and-security" },
+      { label: "Custom Software", href: "/services/custom-software" },
     ],
   },
   { label: "Pricing", href: "#pricing" },

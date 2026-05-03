@@ -1,10 +1,11 @@
-import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, ArrowRight, Sparkles, FileText } from "lucide-react";
+import { useParams } from "react-router-dom";
+import { ArrowLeft, Sparkles, FileText } from "lucide-react";
 import servicesData from "../data/services.json";
 import "../styles/ServiceArticle.css";
 import { HashLink } from "react-router-hash-link";
 import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
+import FinalCTA from "./FinalCTA";
 
 function ServiceArticle() {
   const { serviceId } = useParams();
@@ -92,25 +93,8 @@ function ServiceArticle() {
         </div>
 
         {/* Footer CTA */}
-        <footer className="article-footer">
-          <div className="container">
-            <div className="cta-card">
-              <h2 className="cta-title">Ready to get started?</h2>
-              <p className="cta-description">
-                Let's build something amazing together. Get in touch to discuss
-                your project.
-              </p>
-              <div className="cta-actions">
-                <button className="btn btn-primary btn-lg">
-                  Get Started
-                  <ArrowRight size={18} />
-                </button>
-                <Link to="/contact" className="btn btn-secondary btn-lg">
-                  Contact Sales
-                </Link>
-              </div>
-            </div>
-          </div>
+        <footer>
+          <FinalCTA/>
         </footer>
       </article>
     </div>
