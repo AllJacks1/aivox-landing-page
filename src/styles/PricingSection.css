@@ -134,7 +134,7 @@
 }
 
 .pricing-price {
-  font-size: var(--text-4xl);
+  font-size: var(--text-3xl); /* Slightly reduced for range display */
   font-weight: 800;
   color: var(--text-primary);
   letter-spacing: -0.02em;

@@ -23,16 +23,17 @@ interface PricingTier {
 const tiers: PricingTier[] = [
   {
     name: "Starter",
-    description: "Perfect for small businesses getting online",
-    price: "₱7,999",
-    priceNote: "one-time",
+    description:
+      "Perfect for small businesses & personal brands needing a professional presence quickly",
+    price: "₱15,000 – ₱30,000",
+    priceNote: "Design & Development",
     features: [
-      "1-page responsive website",
-      "1-year website hosting",
-      "1-year domain registration",
       "Basic SEO setup",
-      "Mobile-optimized design",
-      "Contact form integration",
+      "Mobile-responsive design",
+      "Basic contact form integration",
+      "Social media integration",
+      "1-year hosting & domain (₱3,500 – ₱6,000)",
+      "Professional, quick turnaround",
     ],
     cta: "Get Started",
     ctaIcon: ArrowRight,
@@ -42,7 +43,7 @@ const tiers: PricingTier[] = [
     name: "Growth",
     description: "For businesses ready to scale their presence",
     price: "Custom",
-    priceNote: "tailored quote",
+    priceNote: "Tailored Quote",
     features: [
       "Multi-page website (up to 10 pages)",
       "CMS integration",
@@ -58,7 +59,7 @@ const tiers: PricingTier[] = [
     name: "Advanced",
     description: "Full-scale systems for growing enterprises",
     price: "Subscription",
-    priceNote: "monthly billing",
+    priceNote: "Monthly Billing",
     features: [
       "Web Application System or Android App Development",
       "Multi-page website (up to 10 pages)",
@@ -116,7 +117,6 @@ const PricingSection: React.FC = () => {
               <ul className="pricing-features">
                 {tier.features.map((feature) => (
                   <li key={feature}>
-                    {/* <Check className="pricing-check" strokeWidth={2.5} /> */}
                     <span>{feature}</span>
                   </li>
                 ))}
@@ -145,7 +145,7 @@ const PricingSection: React.FC = () => {
           </div>
           <div className="pricing-trust-divider" />
           <div className="pricing-trust-item">
-            <Check className="pricing-trust-check" strokeWidth={3} />
+            <Check className="pricing-check" strokeWidth={3} />
             <span>Flexible for startups</span>
           </div>
         </div>
