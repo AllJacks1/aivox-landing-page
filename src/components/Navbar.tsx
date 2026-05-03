@@ -28,8 +28,14 @@ const navLinks: NavLinkItem[] = [
     children: [
       { label: "Web Development", href: "/services/website-development" },
       { label: "POS Systems", href: "/services/pos-systems" },
-      { label: "Android App Development", href: "/services/android-app-development" },
-      { label: "Network Setup and Security", href: "/services/network-setup-and-security" },
+      {
+        label: "Android App Development",
+        href: "/services/android-app-development",
+      },
+      {
+        label: "Network Setup and Security",
+        href: "/services/network-setup-and-security",
+      },
       { label: "Custom Software", href: "/services/custom-software" },
     ],
   },
@@ -104,10 +110,12 @@ export default function Navbar({
       >
         <div className="navbar__inner">
           {/* ─── Logo ────────────────────────────────────── */}
-          <a href="#home" className="navbar__brand" aria-label="AivoxTech Home">
+          <a href="/#home" className="navbar__brand" aria-label="AivoxTech Home">
             <Zap className="navbar__brand-icon" aria-hidden="true" />
-            <span className="navbar__brand-text">{logoText}</span>
-            <span className="navbar__brand-tech">Tech</span>
+            <span className="navbar__brand-text">
+              {logoText}
+              <span className="navbar__brand-tech">Tech</span>
+            </span>
           </a>
 
           {/* ─── Desktop Navigation ──────────────────────── */}

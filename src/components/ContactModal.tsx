@@ -7,6 +7,7 @@ import {
   MessageSquare,
   Building2,
   Phone,
+  CheckCircle2,
 } from "lucide-react";
 import "../styles/ContactModal.css";
 
@@ -36,6 +37,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -44,31 +46,51 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    setError(null);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError(null);
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-
-    // Reset after showing success
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({
-        name: "",
-        email: "",
-        company: "",
-        phone: "",
-        service: "",
-        message: "",
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
       });
-      onClose();
-    }, 2500);
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Something went wrong");
+      }
+
+      setIsSubmitted(true);
+
+      // Reset and close after showing success
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setFormData({
+          name: "",
+          email: "",
+          company: "",
+          phone: "",
+          service: "",
+          message: "",
+        });
+        onClose();
+      }, 3000);
+    } catch (err) {
+      setError(
+        err instanceof Error
+          ? err.message
+          : "Failed to send. Please try again.",
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   // Close on Escape key
@@ -124,32 +146,21 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
         {/* Success State */}
         {isSubmitted ? (
           <div className="contact-modal-success">
-            <div className="contact-modal-success-icon">
-              <svg
-                width="64"
-                height="64"
-                viewBox="0 0 64 64"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="32" cy="32" r="32" fill="rgba(34, 197, 94, 0.15)" />
-                <path
-                  d="M20 32L28 40L44 24"
-                  stroke="#22C55E"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </div>
+            <CheckCircle2
+              className="contact-modal-success-check"
+              strokeWidth={1.5}
+            />
             <h3 className="contact-modal-success-title">Message Sent!</h3>
             <p className="contact-modal-success-text">
-              We'll reach out to you shortly to schedule your consultation.
+              We've sent a confirmation to your email. Our team will reach out
+              shortly to schedule your consultation.
             </p>
           </div>
         ) : (
           /* Form */
           <form className="contact-modal-form" onSubmit={handleSubmit}>
+            {error && <div className="contact-modal-error">{error}</div>}
+
             <div className="contact-modal-grid">
               {/* Name */}
               <div className="contact-modal-field">
