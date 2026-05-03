@@ -9,6 +9,7 @@ import TrustBar from "./components/TrustBar";
 import WhyChooseSection from "./components/WhyChooseSection";
 import ServiceArticle from "./components/ServiceArticle";
 import { HelmetProvider } from "react-helmet-async";
+import FinalCTA from "./components/FinalCTA";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
                 <PricingSection />
                 <WhyChooseSection />
                 <AboutSection />
+                <FinalCTA/>
               </main>
             }
           />
