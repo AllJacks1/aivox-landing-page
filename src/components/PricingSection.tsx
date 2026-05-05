@@ -9,31 +9,46 @@ import {
 import "../styles/PricingSection.css";
 import ContactModal from "./ContactModal";
 
+/* ============================================================
+   Types & Interfaces
+   ============================================================ */
+
+type Currency = "EUR" | "PHP";
+
 interface PricingTier {
   name: string;
   description: string;
-  price: string;
+  price: string; // Raw display string (fallback)
+  priceMin: number; // Numeric min for conversion
+  priceMax: number; // Numeric max for conversion
   priceNote: string;
   features: string[];
   cta: string;
   ctaIcon: React.ElementType;
   highlighted: boolean;
   highlightLabel?: string;
+  isCustom?: boolean; // For "Custom" / "Subscription" tiers
 }
+
+/* ============================================================
+   Pricing Data — Updated with numeric values for conversion
+   ============================================================ */
 
 const tiers: PricingTier[] = [
   {
     name: "Starter",
     description:
       "Perfect for small businesses & personal brands needing a professional presence quickly",
-    price: "₱15,000 – ₱30,000",
+    price: "₱85,000 – ₱100,000",
+    priceMin: 85000,
+    priceMax: 100000,
     priceNote: "Design & Development",
     features: [
       "Basic SEO setup",
       "Mobile-responsive design",
       "Basic contact form integration",
       "Social media integration",
-      "1-year hosting & domain (₱3,500 – ₱6,000)",
+      "1-year hosting & domain",
       "Professional, quick turnaround",
     ],
     cta: "Get Started",
@@ -44,6 +59,8 @@ const tiers: PricingTier[] = [
     name: "Growth",
     description: "For businesses ready to scale their presence",
     price: "Custom",
+    priceMin: 0,
+    priceMax: 0,
     priceNote: "Tailored Quote",
     features: [
       "Multi-page website (up to 10 pages)",
@@ -55,11 +72,14 @@ const tiers: PricingTier[] = [
     ctaIcon: MessageCircle,
     highlighted: true,
     highlightLabel: "Most Popular",
+    isCustom: true,
   },
   {
     name: "Advanced",
     description: "Full-scale systems for growing enterprises",
     price: "Subscription",
+    priceMin: 0,
+    priceMax: 0,
     priceNote: "Monthly Billing",
     features: [
       "Web Application System or Android App Development",
@@ -74,11 +94,127 @@ const tiers: PricingTier[] = [
     cta: "Book Consultation",
     ctaIcon: Calendar,
     highlighted: false,
+    isCustom: true,
   },
 ];
 
+/* ============================================================
+   Currency Converter Hook (same as PackagesSection)
+   ============================================================ */
+
+const useCurrencyConverter = () => {
+  const [currency, setCurrency] = useState<Currency>("EUR");
+  const [rate, setRate] = useState<number>(1);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const toggleCurrency = async () => {
+    const nextCurrency = currency === "EUR" ? "PHP" : "EUR";
+
+    if (nextCurrency === "EUR") {
+      setCurrency("EUR");
+      setRate(1);
+      setError(null);
+      return;
+    }
+
+    // ✅ Already fetched → reuse
+    if (rate !== 1) {
+      setCurrency("PHP");
+      return;
+    }
+
+    setLoading(true);
+    setError(null);
+
+    try {
+      const response = await fetch(
+        `https://currency-conversion-and-exchange-rates.p.rapidapi.com/convert?from=EUR&to=PHP&amount=1`,
+        {
+          headers: {
+            "x-rapidapi-key": import.meta.env.VITE_RAPIDAPI_KEY,
+            "x-rapidapi-host":
+              "currency-conversion-and-exchange-rates.p.rapidapi.com",
+          },
+        },
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      const rate = data?.result ?? data?.info?.rate ?? data?.rates?.PHP;
+
+      if (!rate) throw new Error("Invalid API response");
+
+      setRate(rate);
+      setCurrency("PHP");
+    } catch (error) {
+      console.log("Currency conversion error:", error);
+      setError("Conversion unavailable. Showing EUR.");
+      setCurrency("EUR");
+      setRate(1);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const formatPrice = (amount: number): string => {
+    const converted = Math.round(amount * rate);
+    if (currency === "PHP") {
+      return `₱${converted.toLocaleString()}`;
+    }
+    return `€${amount.toLocaleString()}`;
+  };
+
+  return { currency, toggleCurrency, formatPrice, loading, error };
+};
+
+/* ============================================================
+   Subcomponents
+   ============================================================ */
+
+const CurrencyToggle: React.FC<{
+  currency: Currency;
+  onToggle: () => void;
+  loading: boolean;
+}> = ({ currency, onToggle, loading }) => (
+  <div className="currency-toggle-wrapper">
+    <button
+      className={`currency-toggle ${loading ? "loading" : ""}`}
+      onClick={onToggle}
+      disabled={loading}
+      aria-label={`Currency: ${currency}`}
+    >
+      <div className={`toggle-slider ${currency === "PHP" ? "right" : ""}`} />
+      <span className={`toggle-option ${currency === "EUR" ? "active" : ""}`}>
+        {loading && currency === "PHP" ? <span className="spinner" /> : null}
+        EUR
+      </span>
+      <span className={`toggle-option ${currency === "PHP" ? "active" : ""}`}>
+        {loading && currency === "EUR" ? <span className="spinner" /> : null}
+        PHP
+      </span>
+    </button>
+  </div>
+);
+
+/* ============================================================
+   Main Component
+   ============================================================ */
+
 const PricingSection: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { currency, toggleCurrency, formatPrice, loading, error } =
+    useCurrencyConverter();
+
+  // Helper to render price based on tier type and currency
+  const renderPrice = (tier: PricingTier): string => {
+    if (tier.isCustom) return tier.price; // "Custom" or "Subscription" stays as-is
+    if (currency === "PHP") return tier.price; // Keep original PHP string
+    return `${formatPrice(tier.priceMin)} – ${formatPrice(tier.priceMax)}`;
+  };
 
   return (
     <section id="pricing" className="pricing-section">
@@ -92,6 +228,14 @@ const PricingSection: React.FC = () => {
             fees — just results.
           </p>
         </div>
+
+        {/* Currency Toggle */}
+        <CurrencyToggle
+          currency={currency}
+          onToggle={toggleCurrency}
+          loading={loading}
+        />
+        {error && <div className="currency-error">{error}</div>}
 
         {/* Pricing Cards */}
         <div className="pricing-grid">
@@ -113,7 +257,7 @@ const PricingSection: React.FC = () => {
               </div>
 
               <div className="pricing-price-wrapper">
-                <span className="pricing-price">{tier.price}</span>
+                <span className="pricing-price">{renderPrice(tier)}</span>
                 <span className="pricing-price-note">{tier.priceNote}</span>
               </div>
 
