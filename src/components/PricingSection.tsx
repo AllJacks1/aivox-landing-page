@@ -39,9 +39,9 @@ const tiers: PricingTier[] = [
     name: "Starter",
     description:
       "Perfect for small businesses & personal brands needing a professional presence quickly",
-    price: "₱85,000 – ₱100,000",
-    priceMin: 85000,
-    priceMax: 100000,
+    price: "€1,180 – €1,390",
+    priceMin: 1180,
+    priceMax: 1390,
     priceNote: "Design & Development",
     features: [
       "Basic SEO setup",
@@ -161,9 +161,8 @@ const useCurrencyConverter = () => {
   };
 
   const formatPrice = (amount: number): string => {
-    const converted = Math.round(amount * rate);
     if (currency === "PHP") {
-      return `₱${converted.toLocaleString()}`;
+      return `₱${Math.round(amount * rate).toLocaleString()}`;
     }
     return `€${amount.toLocaleString()}`;
   };
@@ -211,8 +210,12 @@ const PricingSection: React.FC = () => {
 
   // Helper to render price based on tier type and currency
   const renderPrice = (tier: PricingTier): string => {
-    if (tier.isCustom) return tier.price; // "Custom" or "Subscription" stays as-is
-    if (currency === "PHP") return tier.price; // Keep original PHP string
+    if (tier.isCustom) return tier.price;
+
+    if (currency === "EUR") {
+      return `${formatPrice(tier.priceMin)} – ${formatPrice(tier.priceMax)}`;
+    }
+
     return `${formatPrice(tier.priceMin)} – ${formatPrice(tier.priceMax)}`;
   };
 
