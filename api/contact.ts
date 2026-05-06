@@ -54,7 +54,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     // 1️⃣ Internal notification email to AivoxTech
     await transporter.sendMail({
       from: `"AivoxTech Lead" <${process.env.EMAIL_USER}>`,
-      to: "hello@aivoxtech.com",
+      to: "aivoxtech@astragroupph.com",
       subject: `New Consultation: ${serviceLabel} — ${name}`,
       replyTo: email,
       html: `
