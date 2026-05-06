@@ -165,7 +165,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
             <hr style="border:none; border-top:1px solid #e2e8f0; margin:24px 0;" />
 
             <p style="margin:0; font-size:13px; color:#64748b; line-height:1.6;">
-              If you have any urgent questions, feel free to reply to this email or call us at <a href="tel:+63XXXXXXXXXX" style="color:#22C55E; text-decoration:none; font-weight:600;">+63 XXX XXX XXXX</a>.
+              If you have any urgent questions, feel free to reply to this email or call us at <a href="tel:+639129622537" style="color:#22C55E; text-decoration:none; font-weight:600;">+63 912 962 2537</a>.
             </p>
 
             <p style="margin:16px 0 0; font-size:13px; font-weight:700; color:#10381A;">
