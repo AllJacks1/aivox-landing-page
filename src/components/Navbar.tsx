@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Menu, X, ChevronDown, Zap } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import "../styles/Navbar.css";
 import ContactModal from "./ContactModal";
 import { HashLink } from "react-router-hash-link";
@@ -47,7 +47,6 @@ const navLinks: NavLinkItem[] = [
 // ─── Component ─────────────────────────────────────────
 
 export default function Navbar({
-  logoText = "Aivox",
   ctaText = "Get Free Consultation",
 }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -110,12 +109,18 @@ export default function Navbar({
       >
         <div className="navbar__inner">
           {/* ─── Logo ────────────────────────────────────── */}
-          <a href="/#home" className="navbar__brand" aria-label="AivoxTech Home">
-            <Zap className="navbar__brand-icon" aria-hidden="true" />
-            <span className="navbar__brand-text">
-              {logoText}
-              <span className="navbar__brand-tech">Tech</span>
-            </span>
+          <a
+            href="/#home"
+            className="navbar__brand"
+            aria-label="AivoxTech Home"
+          >
+            <img
+              src="/horizontal_logo.png" // ← update this path to your actual logo file
+              alt="AivoxTech"
+              className="navbar__brand-logo"
+              width={140} // optional: helps prevent layout shift
+              height={34} // optional
+            />
           </a>
 
           {/* ─── Desktop Navigation ──────────────────────── */}
